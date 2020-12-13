@@ -55,4 +55,4 @@ function newTopicMaker(data){
     return newTab
 }
 
-// tabEntryPoint.appendChild(newTopicMaker(newTabURL))
+// Code still needs more work. Topic Tabs are all displaying as a single tab instead of iterating into separate tabs via the .forEach() method. 
