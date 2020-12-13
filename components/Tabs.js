@@ -17,18 +17,34 @@ const newTabURL = axios.get('https://lambda-times-api.herokuapp.com/topics')
 .then(({data}) => {
     // console.log(data)
     let newTabData = data
-    let tabObjectKeys = Object.values(newTabData)
-    const tabDataArray = tabObjectKeys.splice(' ')
+    let tabDataArray = Object.values(newTabData)
+    // const tabDataArray = tabObjectKeys.splice(' ')
 
-    // console.log(tabDataArray)
+    console.log(tabDataArray)
     
-    tabDataArray.forEach(e => {
-        const newTopic = newTopicMaker(e)
+    const newTopic1 = newTopicMaker(tabDataArray[0][0])
+    tabEntryPoint.appendChild(newTopic1);
 
-        tabEntryPoint.appendChild(newTopic);
-    })
+    const newTopic2 = newTopicMaker(tabDataArray[0][0])
+    tabEntryPoint.appendChild(newTopic2);
+
+    const newTopic3 = newTopicMaker(tabDataArray[0][1])
+    tabEntryPoint.appendChild(newTopic3);
+
+    const newTopic4 = newTopicMaker(tabDataArray[0][2])
+    tabEntryPoint.appendChild(newTopic4);
+
+    const newTopic5 = newTopicMaker(tabDataArray[0][3])
+    tabEntryPoint.appendChild(newTopic5);
 
 
+    // tabDataArray.forEach(e => {
+    //     const newTopic = newTopicMaker(e)
+
+    //     tabEntryPoint.appendChild(newTopic);
+    // })
+
+    // Wrote longer code above as the .forEach() method was not working as expected. 
 })
 .catch(err => {
     console.log ('Error: ', err)
