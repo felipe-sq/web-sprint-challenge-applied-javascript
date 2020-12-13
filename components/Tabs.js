@@ -36,7 +36,7 @@ const newTabURL = axios.get('https://lambda-times-api.herokuapp.com/topics')
     tabDataArray.forEach(e => {
         const newTopic = newTopicMaker(e)
 
-        // tabEntryPoint.appendChild(newTopic);
+        tabEntryPoint.appendChild(newTopic);
     })
 
 
@@ -50,14 +50,7 @@ function newTopicMaker(data){
     const newTab = document.createElement('div')
     newTab.classList.add('tab')
     newTab.textContent = `${data}`
-    tabEntryPoint.appendChild(newTab);
-
-
-    // for(i = 0; i < data.length; i++){
-    //     newTab.textContent = `${i}`
-
-    //     // return newTab
-    // }   
+    // tabEntryPoint.appendChild(newTab);
     
     return newTab
 }
