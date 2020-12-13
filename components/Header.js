@@ -30,7 +30,7 @@ function Header() {
     headerDiv.appendChild(headerH1)
     headerDiv.appendChild(headerTemp)
 
-    console.log(headerDiv)
+    // console.log(headerDiv)
 
     return headerDiv
 }
