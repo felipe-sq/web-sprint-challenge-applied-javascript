@@ -35,21 +35,56 @@ Axios.get('https://lambda-times-api.herokuapp.com/articles')
     let articlesJQuery = data.articles['jquery']
     let articlesNode = data.articles['node']
 
-    let articlesAll = data.articles
+    // let articlesAll = data.articles
 
 
     // console.log(articlesJS[0])
     console.log(articlesJS[0]['headline'])
 
-    const newArticle = newHeadlineCardMaker(articlesJS[0])
-    headlineEntryPoint.appendChild(newArticle)
+    const newArticle1 = newHeadlineCardMaker(articlesJS[0])
+    const newArticle2 = newHeadlineCardMaker(articlesJS[1])
+    const newArticle3 = newHeadlineCardMaker(articlesJS[2])
+    const newArticle4 = newHeadlineCardMaker(articlesJS[3])
+    headlineEntryPoint.appendChild(newArticle1)
+    headlineEntryPoint.appendChild(newArticle2)
+    headlineEntryPoint.appendChild(newArticle3)
+    headlineEntryPoint.appendChild(newArticle4)
 
 
-    articlesJS.forEach(e => {
+    const nodeArticle1 = newHeadlineCardMaker(articlesNode[0])
+    const nodeArticle2 = newHeadlineCardMaker(articlesNode[1])
+    headlineEntryPoint.appendChild(nodeArticle1)
+    headlineEntryPoint.appendChild(nodeArticle2)
 
-        const newArticle1 = newHeadlineCardMaker(articlesJS[e])
-        headlineEntryPoint.appendChild(newArticle1)
-    })
+    const bsArticle1 = newHeadlineCardMaker(articlesBS[0])
+    const bsArticle2 = newHeadlineCardMaker(articlesBS[1])
+    const bsArticle3 = newHeadlineCardMaker(articlesBS[2])
+    headlineEntryPoint.appendChild(bsArticle1)
+    headlineEntryPoint.appendChild(bsArticle2)
+    headlineEntryPoint.appendChild(bsArticle3)
+
+    const techArticle1 = newHeadlineCardMaker(articlesTech[0])
+    const techArticle2 = newHeadlineCardMaker(articlesTech[1])
+    const techArticle3 = newHeadlineCardMaker(articlesTech[2])
+    headlineEntryPoint.appendChild(techArticle1)
+    headlineEntryPoint.appendChild(techArticle2)
+    headlineEntryPoint.appendChild(techArticle3)
+
+    const jqArticle1 = newHeadlineCardMaker(articlesJQuery[0])
+    const jqArticle2 = newHeadlineCardMaker(articlesJQuery[1])
+    const jqArticle3 = newHeadlineCardMaker(articlesJQuery[2])
+    headlineEntryPoint.appendChild(jqArticle1)
+    headlineEntryPoint.appendChild(jqArticle2)
+    headlineEntryPoint.appendChild(jqArticle3)
+
+    // Unable to write working code to iterate through article objects. Entered long 
+    // code above.
+
+    // articlesJS.forEach(e => {
+
+    //     const newArticle1 = newHeadlineCardMaker(articlesJS[e])
+    //     headlineEntryPoint.appendChild(newArticle1)
+    // })
 
 
     // for(i = 0; i < articlesBS.length; i++){
@@ -85,9 +120,12 @@ function newHeadlineCardMaker(data) {
     authorImgDiv.appendChild(divImg)
     divAuthor.appendChild(spanByLine)
 
+    divCard.addEventListener('click', ()=> {
+        console.log(divHeadline.textContent)
+    })
+
     console.log(divCard)
 
     return divCard
 }
 
-// newHeadlineCard(articlesURL)
