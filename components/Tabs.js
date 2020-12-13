@@ -17,21 +17,10 @@ const newTabURL = axios.get('https://lambda-times-api.herokuapp.com/topics')
 .then(({data}) => {
     // console.log(data)
     let newTabData = data
-    let tabDataArray = Object.values(newTabData)
+    let tabObjectKeys = Object.values(newTabData)
+    const tabDataArray = tabObjectKeys.splice(' ')
 
-    console.log(tabDataArray)
-    
-    // const newTopic = newTopicMaker(newTabData)
-
-
-    // for(i = 0; i < newTabData.length; i++){
-    //     const newTab = document.createElement('div')
-    //     newTab.classList.add('tab')
-    //     newTab.textContent = `${i}`
-
-    //     tabEntryPoint.appendChild(newTopic);
-    //     return newTab
-    // }
+    // console.log(tabDataArray)
     
     tabDataArray.forEach(e => {
         const newTopic = newTopicMaker(e)
@@ -56,3 +45,5 @@ function newTopicMaker(data){
 }
 
 // Code still needs more work. Topic Tabs are all displaying as a single tab instead of iterating into separate tabs via the .forEach() method. 
+
+// tabEntryPoint.appendChild(newTopicMaker(newTabURL))

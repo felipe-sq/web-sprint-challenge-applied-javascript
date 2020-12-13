@@ -19,4 +19,75 @@
 //
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
+
+const { default: Axios } = require("axios");
+
 // Use your function to create a card for each of the articles, and append each card to the DOM.
+
+const headlineEntryPoint = document.querySelector('div.cards-container')
+
+Axios.get('https://lambda-times-api.herokuapp.com/articles')
+.then(({data}) => {
+    console.log(data)
+    let articlesJS = data.articles['javascript']
+    let articlesBS = data.articles['bootstrap']
+    let articlesTech = data.articles['technology']
+    let articlesJQuery = data.articles['jquery']
+    let articlesNode = data.articles['node']
+
+    let articlesAll = data.articles
+
+
+    // console.log(articlesJS[0])
+    console.log(articlesJS[0]['headline'])
+
+    const newArticle = newHeadlineCardMaker(articlesJS[0])
+    headlineEntryPoint.appendChild(newArticle)
+
+
+    articlesJS.forEach(e => {
+
+        const newArticle1 = newHeadlineCardMaker(articlesJS[e])
+        headlineEntryPoint.appendChild(newArticle1)
+    })
+
+
+    // for(i = 0; i < articlesBS.length; i++){
+    //     const newHeadlineCard = newHeadlineCardMaker(articlesBS['i'])
+    //     headlineEntryPoint.appendChild(newHeadlineCardMaker(newHeadlineCard))        
+    //     return newHeadlineCard
+    // }
+
+})
+.catch(err => {
+    console.log('Error: ', err)
+})
+
+function newHeadlineCardMaker(data) {
+    const divCard = document.createElement('div')
+    const divHeadline = document.createElement('div')
+    const divAuthor = document.createElement('div')
+    const authorImgDiv = document.createElement('div')
+    const divImg = document.createElement('img')
+    const spanByLine = document.createElement('span')
+
+    divCard.classList.add('card')
+    divHeadline.classList.add('headline')
+    divHeadline.textContent = `${data['headline']}`
+    divAuthor.classList.add('author')
+    authorImgDiv.classList.add('img-container')
+    divImg.src = data['authorPhoto']
+    spanByLine.textContent = `By ${data['authorName']}`
+
+    divCard.appendChild(divHeadline)
+    divCard.appendChild(divAuthor)
+    divAuthor.appendChild(authorImgDiv)
+    authorImgDiv.appendChild(divImg)
+    divAuthor.appendChild(spanByLine)
+
+    console.log(divCard)
+
+    return divCard
+}
+
+// newHeadlineCard(articlesURL)
