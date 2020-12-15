@@ -17,26 +17,10 @@ const newTabURL = axios.get('https://lambda-times-api.herokuapp.com/topics')
 .then(({data}) => {
     // console.log(data)
     let newTabData = data.topics
-    // let tabDataArray = Object.values(newTabData)
-    // const tabDataArray = tabObjectKeys.splice(' ')
 
-    console.log(newTabData)
-    // console.log(tabDataArray)
+    // console.log(newTabData)
     
-    // const newTopic1 = newTopicMaker(tabDataArray[0][0])
-    // tabEntryPoint.appendChild(newTopic1);
-
-    // const newTopic2 = newTopicMaker(tabDataArray[0][0])
-    // tabEntryPoint.appendChild(newTopic2);
-
-    // const newTopic3 = newTopicMaker(tabDataArray[0][1])
-    // tabEntryPoint.appendChild(newTopic3);
-
-    // const newTopic4 = newTopicMaker(tabDataArray[0][2])
-    // tabEntryPoint.appendChild(newTopic4);
-
-    // const newTopic5 = newTopicMaker(tabDataArray[0][3])
-    // tabEntryPoint.appendChild(newTopic5);
+    // Re-wrote code for better readability and to incorporate .forEach() method
 
 
     newTabData.forEach(e => {
@@ -44,23 +28,15 @@ const newTabURL = axios.get('https://lambda-times-api.herokuapp.com/topics')
 
         tabEntryPoint.appendChild(newTopic);
     })
-
-    // Wrote longer code above as the .forEach() method was not working as expected. 
 })
 .catch(err => {
     console.log ('Error: ', err)
 })
 
 function newTopicMaker(data){
-
     const newTab = document.createElement('div')
     newTab.classList.add('tab')
     newTab.textContent = `${data}`
-    // tabEntryPoint.appendChild(newTab);
     
     return newTab
 }
-
-// Code still needs more work. Topic Tabs are all displaying as a single tab instead of iterating into separate tabs via the .forEach() method. 
-
-// tabEntryPoint.appendChild(newTopicMaker(newTabURL))
