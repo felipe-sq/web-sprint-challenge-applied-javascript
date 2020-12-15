@@ -16,33 +16,34 @@ const tabEntryPoint = document.querySelector('div.topics')
 const newTabURL = axios.get('https://lambda-times-api.herokuapp.com/topics')
 .then(({data}) => {
     // console.log(data)
-    let newTabData = data
-    let tabDataArray = Object.values(newTabData)
+    let newTabData = data.topics
+    // let tabDataArray = Object.values(newTabData)
     // const tabDataArray = tabObjectKeys.splice(' ')
 
-    console.log(tabDataArray)
+    console.log(newTabData)
+    // console.log(tabDataArray)
     
-    const newTopic1 = newTopicMaker(tabDataArray[0][0])
-    tabEntryPoint.appendChild(newTopic1);
+    // const newTopic1 = newTopicMaker(tabDataArray[0][0])
+    // tabEntryPoint.appendChild(newTopic1);
 
-    const newTopic2 = newTopicMaker(tabDataArray[0][0])
-    tabEntryPoint.appendChild(newTopic2);
+    // const newTopic2 = newTopicMaker(tabDataArray[0][0])
+    // tabEntryPoint.appendChild(newTopic2);
 
-    const newTopic3 = newTopicMaker(tabDataArray[0][1])
-    tabEntryPoint.appendChild(newTopic3);
+    // const newTopic3 = newTopicMaker(tabDataArray[0][1])
+    // tabEntryPoint.appendChild(newTopic3);
 
-    const newTopic4 = newTopicMaker(tabDataArray[0][2])
-    tabEntryPoint.appendChild(newTopic4);
+    // const newTopic4 = newTopicMaker(tabDataArray[0][2])
+    // tabEntryPoint.appendChild(newTopic4);
 
-    const newTopic5 = newTopicMaker(tabDataArray[0][3])
-    tabEntryPoint.appendChild(newTopic5);
+    // const newTopic5 = newTopicMaker(tabDataArray[0][3])
+    // tabEntryPoint.appendChild(newTopic5);
 
 
-    // tabDataArray.forEach(e => {
-    //     const newTopic = newTopicMaker(e)
+    newTabData.forEach(e => {
+        const newTopic = newTopicMaker(e)
 
-    //     tabEntryPoint.appendChild(newTopic);
-    // })
+        tabEntryPoint.appendChild(newTopic);
+    })
 
     // Wrote longer code above as the .forEach() method was not working as expected. 
 })
